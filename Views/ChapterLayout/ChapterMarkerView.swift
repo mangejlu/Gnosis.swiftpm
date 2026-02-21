@@ -16,6 +16,8 @@ struct ChapterMarkerView: View {
     let isCurrent: Bool
     let alignment: SideAlignment
 
+    @State private var pulse = false
+
     var body: some View {
 
         VStack(spacing: 8) {
@@ -28,13 +30,26 @@ struct ChapterMarkerView: View {
                 )
                 .frame(width: 64, height: 64)
                 .shadow(color: .black.opacity(0.1), radius: 6, y: 4)
-                .scaleEffect(isCurrent ? 1.15 : 1)
-                .animation(
-                    isCurrent ?
-                    .easeInOut(duration: 1).repeatForever(autoreverses: true)
-                    : .default,
-                    value: isCurrent
+                .scaleEffect(
+                    isCurrent ? (pulse ? 1.15 : 0.95) : 1
                 )
+                .onAppear {
+                    guard isCurrent else { return }
+                    pulse = false
+                    withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                        pulse = true
+                    }
+                }
+                .onChange(of: isCurrent) { newValue in
+                    if newValue {
+                        pulse = false
+                        withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                            pulse = true
+                        }
+                    } else {
+                        pulse = false
+                    }
+                }
 
             Text(title)
                 .font(.caption.weight(.semibold))

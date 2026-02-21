@@ -17,7 +17,7 @@ struct LocalData {
             subtitle: "8 chapters",
             islandName: "Isle of Honesty",
             isLocked: false,
-            progress: 7,
+            progress: 6,
 
             chapters: [
 

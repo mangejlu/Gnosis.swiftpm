@@ -10,11 +10,13 @@ import SwiftUI
 struct ChaptersMapView: View {
 
     let book: Book
+    @EnvironmentObject private var progressStore: ProgressStore
 
     var body: some View {
         let chapters = book.chapters
-        let lastIndex = max(0, chapters.count - 1)
-        let completedCount = max(0, chapters.count - 1)
+        let progress = min(max(progressStore.progress(for: book), 0), chapters.count)
+        let completedCount = min(progress, chapters.count)
+        let lastIncompleteIndex = min(progress, max(0, chapters.count - 1))
 
         ZStack {
             BackgroundView()
@@ -37,7 +39,7 @@ struct ChaptersMapView: View {
                     GlassCard {
                         ChapterMapView(
                             chapters: chapters,
-                            lastIncompleteIndex: lastIndex
+                            lastIncompleteIndex: lastIncompleteIndex
                         )
                     }
                 }

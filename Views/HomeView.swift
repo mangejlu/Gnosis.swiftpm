@@ -9,6 +9,8 @@ import SwiftUI
 
 struct HomeView: View {
 
+    @EnvironmentObject private var progressStore: ProgressStore
+
     var body: some View {
 
         let books = LocalData.books
@@ -161,6 +163,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView().environmentObject(ProgressStore())
 }
 

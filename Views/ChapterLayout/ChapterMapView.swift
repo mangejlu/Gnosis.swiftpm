@@ -51,6 +51,7 @@ struct ChapterMapView: View {
                             }
                             .buttonStyle(.plain)
                             .position(point)
+                            .zIndex(isCurrent ? 1 : 0)
                         } else {
                             ChapterMarkerView(
                                 title: chapter.title,
@@ -59,10 +60,13 @@ struct ChapterMapView: View {
                                 alignment: index.isMultiple(of: 2) ? .leading : .trailing
                             )
                             .opacity(0.5)
+                            .allowsHitTesting(false)
                             .position(point)
+                            .zIndex(0)
                         }
                     }
                 }
+                .animation(.easeInOut(duration: 0.3), value: lastIncompleteIndex)
             }
         }
         .frame(height: totalHeight)
