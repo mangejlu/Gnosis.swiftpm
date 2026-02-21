@@ -19,19 +19,19 @@ struct ChapterPathShape: Shape {
         var path = Path()
         path.move(to: points[0])
 
-        for i in 0..<points.count - 1 {
-
-            let p0 = points[i]
-            let p1 = points[i + 1]
-
+        for i in 1..<points.count {
+            let prev = points[i - 1]
+            let current = points[i]
+            
             let mid = CGPoint(
-                x: (p0.x + p1.x) / 2,
-                y: (p0.y + p1.y) / 2
+                x: (prev.x + current.x) / 2,
+                y: (prev.y + current.y) / 2
             )
-
-            path.addQuadCurve(to: mid, control: p0)
-            path.addQuadCurve(to: p1, control: p1)
+            
+            path.addQuadCurve(to: mid, control: prev)
+            path.addQuadCurve(to: current, control: current)
         }
+
 
         return path
     }

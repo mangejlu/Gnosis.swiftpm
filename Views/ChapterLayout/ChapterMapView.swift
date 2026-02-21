@@ -34,22 +34,33 @@ struct ChapterMapView: View {
                         let isCompleted = index < lastIncompleteIndex
                         let isCurrent = index == lastIncompleteIndex
 
-                        NavigationLink {
-                            if index == chapters.count - 1 {
-                                BossIntroView(chapter: chapter)
-                            } else {
-                                StoryReaderView(chapter: chapter)
+                        if isCompleted || isCurrent {
+                            NavigationLink {
+                                if index == chapters.count - 1 {
+                                    BossIntroView(chapter: chapter)
+                                } else {
+                                    StoryReaderView(chapter: chapter)
+                                }
+                            } label: {
+                                ChapterMarkerView(
+                                    title: chapter.title,
+                                    isCompleted: isCompleted,
+                                    isCurrent: isCurrent,
+                                    alignment: index.isMultiple(of: 2) ? .leading : .trailing
+                                )
                             }
-                        } label: {
+                            .buttonStyle(.plain)
+                            .position(point)
+                        } else {
                             ChapterMarkerView(
                                 title: chapter.title,
                                 isCompleted: isCompleted,
                                 isCurrent: isCurrent,
                                 alignment: index.isMultiple(of: 2) ? .leading : .trailing
                             )
+                            .opacity(0.5)
+                            .position(point)
                         }
-                        .buttonStyle(.plain)
-                        .position(point)
                     }
                 }
             }
@@ -59,12 +70,18 @@ struct ChapterMapView: View {
 
     private func generatePoints(in size: CGSize) -> [CGPoint] {
 
-        let x = size.width / 2
+        let centerX = size.width / 2
+        let amplitude: CGFloat = size.width * 0.28   // how far left/right
+        let waveLength: CGFloat = 2.2                // how tight the curve is
 
         return (0..<chapters.count).map { i in
-            CGPoint(
-                x: x,
-                y: topPadding + CGFloat(i) * spacing
+            let y = topPadding + CGFloat(i) * spacing
+            let progress = CGFloat(i) / waveLength
+            let xOffset = sin(progress * .pi) * amplitude
+
+            return CGPoint(
+                x: centerX + xOffset,
+                y: y
             )
         }
     }

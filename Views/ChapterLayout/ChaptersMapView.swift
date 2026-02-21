@@ -19,7 +19,7 @@ struct ChaptersMapView: View {
         ZStack {
             BackgroundView()
 
-            ScrollView {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: 28) {
 
                     // Header

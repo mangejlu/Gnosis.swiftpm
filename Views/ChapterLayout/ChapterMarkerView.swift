@@ -28,6 +28,13 @@ struct ChapterMarkerView: View {
                 )
                 .frame(width: 64, height: 64)
                 .shadow(color: .black.opacity(0.1), radius: 6, y: 4)
+                .scaleEffect(isCurrent ? 1.15 : 1)
+                .animation(
+                    isCurrent ?
+                    .easeInOut(duration: 1).repeatForever(autoreverses: true)
+                    : .default,
+                    value: isCurrent
+                )
 
             Text(title)
                 .font(.caption.weight(.semibold))
@@ -40,3 +47,4 @@ struct ChapterMarkerView: View {
         }
     }
 }
+
