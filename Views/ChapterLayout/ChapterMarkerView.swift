@@ -22,34 +22,42 @@ struct ChapterMarkerView: View {
 
         VStack(spacing: 8) {
 
-            Circle()
-                .fill(
-                    isCompleted
-                    ? AppTheme.teal
-                    : (isCurrent ? AppTheme.primaryOrange : Color.gray.opacity(0.25))
-                )
-                .frame(width: 64, height: 64)
-                .shadow(color: .black.opacity(0.1), radius: 6, y: 4)
-                .scaleEffect(
-                    isCurrent ? (pulse ? 1.15 : 0.95) : 1
-                )
-                .onAppear {
-                    guard isCurrent else { return }
+            ZStack {
+                Image("ChapterIcon")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 64, height: 64)
+
+                Circle()
+                    .stroke(
+                        isCompleted
+                        ? AppTheme.teal
+                        : (isCurrent ? AppTheme.primaryOrange : Color.gray.opacity(0.25)),
+                        lineWidth: 4
+                    )
+                    .frame(width: 64, height: 64)
+            }
+            .shadow(color: .black.opacity(0.1), radius: 6, y: 4)
+            .scaleEffect(
+                isCurrent ? (pulse ? 1.15 : 0.95) : 1
+            )
+            .onAppear {
+                guard isCurrent else { return }
+                pulse = false
+                withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+                    pulse = true
+                }
+            }
+            .onChange(of: isCurrent) { newValue in
+                if newValue {
                     pulse = false
                     withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
                         pulse = true
                     }
+                } else {
+                    pulse = false
                 }
-                .onChange(of: isCurrent) { newValue in
-                    if newValue {
-                        pulse = false
-                        withAnimation(.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
-                            pulse = true
-                        }
-                    } else {
-                        pulse = false
-                    }
-                }
+            }
 
             Text(title)
                 .font(.caption.weight(.semibold))
