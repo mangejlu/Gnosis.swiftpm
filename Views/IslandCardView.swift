@@ -25,6 +25,7 @@ struct IslandCardView: View {
                     HStack {
                         Text(book.islandName)
                             .font(.title.bold())
+                            .foregroundColor(.black)
 
                         Spacer()
 
@@ -36,10 +37,10 @@ struct IslandCardView: View {
 
                     if book.isLocked {
                         Text("🔒 Locked")
-                            .foregroundColor(.gray)
+                            .foregroundColor(AppTheme.secondaryText)
                     } else {
                         Text("Join \(book.title) on a journey to discover why honesty matters most!")
-                            .foregroundColor(.gray)
+                            .foregroundColor(AppTheme.secondaryText)
 
                         ProgressBarView(progress: Double(book.progress) / 8.0)
                     }

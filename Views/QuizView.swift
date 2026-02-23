@@ -31,6 +31,7 @@ struct QuizView: View {
 
                     Text("You scored \(score) / \(quiz.questions.count)")
                         .font(.title3)
+                        .foregroundColor(AppTheme.secondaryText)
 
                     if showConfetti {
                         ConfettiView()
@@ -55,15 +56,19 @@ struct QuizView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Question \(current + 1) of \(quiz.questions.count)")
                             .font(.headline)
+                            .foregroundColor(AppTheme.secondaryText)
                         ProgressBarView(progress: Double(current) / Double(max(1, quiz.questions.count)))
                     }
 
                     Text("Quiz! 🎯")
                         .font(.largeTitle.bold())
+                        .foregroundColor(.primary)
+
 
                     Text(quiz.questions[current].question)
                         .font(.title3)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(.black)
 
                     VStack(spacing: 12) {
                         ForEach(0..<quiz.questions[current].options.count, id: \.self) { index in
@@ -90,7 +95,7 @@ struct QuizView: View {
                                     .padding()
                                     .frame(maxWidth: .infinity)
                                     .background(buttonBackground(isSelected: isSelected, isCorrect: isCorrect))
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(AppTheme.secondaryText)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 20)
                                             .stroke(borderColor(isSelected: isSelected, isCorrect: isCorrect), lineWidth: isSelected ? 2 : 1)
@@ -104,12 +109,14 @@ struct QuizView: View {
                     Text("Score: \(score)")
                         .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundColor(AppTheme.secondaryText)
 
                     Spacer(minLength: 0)
                 }
                 .padding()
             }
         }
+        .preferredColorScheme(.light)
     }
 
     private func buttonBackground(isSelected: Bool, isCorrect: Bool) -> some View {
@@ -120,19 +127,19 @@ struct QuizView: View {
                 } else if isSelected {
                     Color.red.opacity(0.25)
                 } else {
-                    Color.white
+                    Color(uiColor: .secondarySystemBackground)
                 }
             } else {
-                Color.white
+                Color(uiColor: .secondarySystemBackground)
             }
         }
     }
 
     private func borderColor(isSelected: Bool, isCorrect: Bool) -> Color {
         if selectedIndex != nil {
-            return isCorrect ? .green : (isSelected ? .red : Color.gray.opacity(0.3))
+            return isCorrect ? .green : (isSelected ? .red : Color(uiColor: .separator))
         }
-        return Color.gray.opacity(0.3)
+        return Color(uiColor: .separator)
     }
 }
 

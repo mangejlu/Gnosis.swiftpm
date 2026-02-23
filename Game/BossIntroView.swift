@@ -27,7 +27,7 @@ struct BossIntroView: View {
                                 .font(.headline)
                             Text("Feed the monster to unlock \(chapter.title).")
                                 .font(.subheadline)
-                                .foregroundStyle(.secondary)
+                                .foregroundColor(AppTheme.secondaryText)
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
@@ -67,3 +67,4 @@ struct BossIntroView: View {
         BossIntroView(chapter: chapter)
     }
 }
+

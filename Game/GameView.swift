@@ -96,11 +96,11 @@ struct GameView: View {
                                 if currentRound >= 5 {
                                     Text("The monster is not hungry anymore!")
                                         .font(.headline)
-                                        .foregroundStyle(.secondary)
+                                        .foregroundColor(AppTheme.secondaryText)
                                 } else {
                                     Text("Monster defeated!")
                                         .font(.headline)
-                                        .foregroundStyle(.secondary)
+                                        .foregroundColor(AppTheme.secondaryText)
                                 }
                                 
                                 // Achievement sticker section
@@ -133,7 +133,7 @@ struct GameView: View {
                                         
                                         Text("Sticker unlocked for beating your first boss")
                                             .font(.subheadline)
-                                            .foregroundStyle(.secondary)
+                                            .foregroundColor(AppTheme.secondaryText)
                                     }
                                     .scaleEffect(showAchievement ? 1 : 0.85)
                                     .opacity(showAchievement ? 1 : 0)
@@ -141,7 +141,7 @@ struct GameView: View {
                                     
                                     Text("You can see your stickers in the Progress page.")
                                         .font(.footnote)
-                                        .foregroundStyle(.secondary)
+                                        .foregroundColor(AppTheme.secondaryText)
                                 }
                                 .frame(maxWidth: .infinity)
                                 .padding(.top, 4)

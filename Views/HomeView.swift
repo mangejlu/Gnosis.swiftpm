@@ -34,9 +34,11 @@ struct HomeView: View {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text("7-Day Streak!")
                                         .font(.headline)
+                                        .foregroundColor(.black)
+
                                     Text("You're on fire — keep it going!")
                                         .font(.subheadline)
-                                        .foregroundStyle(.secondary)
+                                        .foregroundColor(AppTheme.secondaryText)
                                 }
                                 Spacer()
                                 Text("7️⃣")
@@ -45,7 +47,6 @@ struct HomeView: View {
                             .frame(minHeight: 72)
                         }
 
-                
 
                         TabView {
 
@@ -83,6 +84,8 @@ struct HomeView: View {
 
                             Text("⚡ Quick Start")
                                 .font(.title2.bold())
+                                .foregroundColor(.black)
+
 
                             HStack(spacing: 16) {
 
@@ -102,14 +105,16 @@ struct HomeView: View {
 
                                             Text("Continue Reading")
                                                 .font(.headline)
+                                                .foregroundColor(.black)
+
 
                                             Text(firstUnlocked?.title ?? "Nothing to continue")
                                                 .font(.subheadline)
-                                                .foregroundStyle(.secondary)
+                                                .foregroundColor(AppTheme.secondaryText)
 
                                             Text("Tip: Tap the island above to open chapters")
                                                 .font(.caption)
-                                                .foregroundStyle(.secondary)
+                                                .foregroundColor(AppTheme.secondaryText)
                                         }
                                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                                     }
@@ -138,10 +143,12 @@ struct HomeView: View {
 
                                             Text("Daily Quiz")
                                                 .font(.headline)
+                                                .foregroundColor(.black)
+
 
                                             Text("\(firstUnlocked?.chapters.first?.quiz.questions.count ?? 0) questions ready")
                                                 .font(.subheadline)
-                                                .foregroundStyle(.secondary)
+                                                .foregroundColor(AppTheme.secondaryText)
                                         }
                                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
                                     }

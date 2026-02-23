@@ -29,6 +29,7 @@ struct ProgressViewScreen: View {
                         Text("📊")
                         Text("My Skills")
                             .font(.title2.bold())
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.horizontal)
@@ -38,6 +39,7 @@ struct ProgressViewScreen: View {
                         ForEach(skills) { skill in
                             SkillProgressCard(skill: skill)
                                 .padding(.horizontal)
+                                
                         }
                     }
                     .padding(.bottom, 8)
@@ -46,6 +48,7 @@ struct ProgressViewScreen: View {
                         Text("🏅")
                         Text("Sticker Collection")
                             .font(.title3.bold())
+                            .foregroundColor(.black)
                         Spacer()
                     }
                     .padding(.horizontal)
@@ -76,11 +79,12 @@ private struct SkillProgressCard: View {
                         Text(skill.emoji).font(.title3)
                         Text(skill.name)
                             .font(.headline)
+                            .foregroundColor(.black)
                     }
                     Spacer()
                     Text("\(Int(skill.progress * 100))%")
                         .font(.subheadline.bold())
-                        .foregroundStyle(.secondary)
+                        .foregroundColor(.black)
                 }
 
                 ProgressBarView(progress: skill.progress, height: 14)
@@ -116,6 +120,7 @@ private struct StickerTile: View {
                     VStack {
                         Image(systemName: sticker.systemImage)
                             .font(.title2)
+                            .foregroundStyle(.black)
                     }
                     .frame(width: 64, height: 64)
                 }
@@ -124,6 +129,7 @@ private struct StickerTile: View {
                 if !sticker.earned {
                     Image(systemName: "lock.fill")
                         .font(.caption2)
+                        .foregroundStyle(.black)
                         .padding(6)
                         .background(.ultraThinMaterial, in: Circle())
                         .offset(x: 6, y: -6)
@@ -136,6 +142,7 @@ private struct StickerTile: View {
                     .font(.caption)
                 Text(sticker.title)
                     .font(.footnote)
+                    .foregroundColor(.black)
                     .lineLimit(1)
             }
         }
