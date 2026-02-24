@@ -10,6 +10,8 @@ import SwiftUI
 struct HomeView: View {
 
     @EnvironmentObject private var progressStore: ProgressStore
+    @AppStorage("hasCompletedStartBook") private var hasCompletedStartBook: Bool = false
+    @State private var showStartBook: Bool = false
 
     var body: some View {
 
@@ -165,6 +167,17 @@ struct HomeView: View {
                     .padding(.top)
                 }
             }
+        }
+        .onAppear {
+            if !hasCompletedStartBook {
+                showStartBook = true
+            }
+        }
+        .fullScreenCover(isPresented: $showStartBook) {
+            StartBookView(onFinished: {
+                hasCompletedStartBook = true
+                showStartBook = false
+            })
         }
     }
 }

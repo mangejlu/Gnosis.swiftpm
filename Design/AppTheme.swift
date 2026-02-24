@@ -19,5 +19,13 @@ struct AppTheme {
         startPoint: .leading,
         endPoint: .trailing
     )
+    
+    static let paperTop = Color(red: 1.0, green: 0.992, blue: 0.973)
+    static let paperBottom = Color(red: 0.965, green: 0.937, blue: 0.890)
+    static let paperGradient = LinearGradient(
+        colors: [paperTop, paperBottom],
+        startPoint: .topLeading,
+        endPoint: .bottomTrailing
+    )
 }
 
