@@ -428,5 +428,65 @@ struct LocalData {
             chapters: []
         )
     ]
+
+    static let wordSyllables: [String: String] = [
+        // Common preview/example
+        "pleasure": "plea-sure",
+        // Chapter 1
+        "imagination": "i-ma-gi-na-tion",
+        "curious": "cu-ri-ous",
+        "unselfish": "un-self-ish",
+
+        // Chapter 2
+        "sacrifice": "sac-ri-fice",
+        "responsibility": "re-spon-si-bil-i-ty",
+        "consequences": "con-se-quen-ces",
+
+        // Chapter 3
+        "greedy": "gree-dy",
+        "regretful": "re-gret-ful",
+        "instantly": "in-stant-ly",
+
+        // Chapter 4
+        "visible": "vis-i-ble",
+        "damages": "da-ma-ges",
+        "courage": "cou-rage",
+
+        // Chapter 5
+        "discipline": "dis-ci-pline",
+        "transformed": "trans-formed",
+        "horrified": "hor-ri-fied",
+
+        // Chapter 6
+        "unwavering": "un-wa-ver-ing",
+        "hesitation": "hes-i-ta-tion",
+        "enormous": "e-nor-mous",
+
+        // Chapter 7
+        "devised": "de-vised",
+        "determination": "de-ter-mi-na-tion",
+        "exhausted": "ex-haus-ted",
+
+        // Chapter 8
+        "diligently": "dil-i-gent-ly",
+        "maturity": "ma-tu-ri-ty",
+        "selflessness": "self-less-ness"
+    ]
+
+    static func syllables(for word: String) -> String? {
+        return wordSyllables[word.lowercased()]
+    }
+
+    static func definition(for word: String) -> String? {
+        let target = word.lowercased()
+        for book in books {
+            for chapter in book.chapters {
+                for (key, value) in chapter.highlightedWords {
+                    if key.lowercased() == target { return value }
+                }
+            }
+        }
+        return nil
+    }
 }
 

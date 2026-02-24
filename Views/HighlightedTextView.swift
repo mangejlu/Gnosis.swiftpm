@@ -13,7 +13,9 @@ struct HighlightedTextView: View {
     let highlights: [String: String]
     
     @State private var selectedWord: String?
-    @State private var showAlert = false
+    @State private var showWordDetail = false
+    @State private var selectedDefinition: String = ""
+    @State private var selectedSyllables: String?
     
     var body: some View {
         let attributedString = createAttributedString()
@@ -28,16 +30,22 @@ struct HighlightedTextView: View {
                 if url.scheme == "gnosis" {
                     let term = url.lastPathComponent.removingPercentEncoding ?? url.lastPathComponent
                     selectedWord = term
-                    showAlert = true
+                    selectedDefinition = highlights[term] ?? ""
+                    selectedSyllables = LocalData.syllables(for: term)
+                    
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        showWordDetail = true
+                    }
                     return .handled
                 }
                 return .systemAction
             })
-            .alert("New Word 🌟", isPresented: $showAlert) {
-                Button("Got it!") { }
-            } message: {
-                Text(highlights[selectedWord ?? ""] ?? "")
-            }
+            .wordDetailSheet(
+                word: selectedWord,
+                definition: selectedDefinition,
+                syllables: selectedSyllables,
+                isPresented: $showWordDetail
+            )
     }
     
     private func createAttributedString() -> AttributedString {
@@ -49,6 +57,7 @@ struct HighlightedTextView: View {
             while let range = text.range(of: word, options: .literal, range: searchRange) {
                 if let lower = AttributedString.Index(range.lowerBound, within: attributed),
                    let upper = AttributedString.Index(range.upperBound, within: attributed) {
+                    
                     attributed[lower..<upper].foregroundColor = AppTheme.teal
                     attributed[lower..<upper].underlineStyle = .single
                     
@@ -69,6 +78,11 @@ struct WrapChipsView: View {
     let words: [String]
     let onTap: (String) -> Void
     
+    @State private var selectedWord: String?
+    @State private var showWordDetail = false
+    @State private var selectedDefinition: String = ""
+    @State private var selectedSyllables: String?
+    
     private let columns = [
         GridItem(.adaptive(minimum: 80), spacing: 8)
     ]
@@ -79,10 +93,21 @@ struct WrapChipsView: View {
                 chip(for: word)
             }
         }
+        .wordDetailSheet(
+            word: selectedWord,
+            definition: selectedDefinition,
+            syllables: selectedSyllables,
+            isPresented: $showWordDetail
+        )
     }
     
     private func chip(for word: String) -> some View {
-        Button(action: { onTap(word) }) {
+        Button(action: {
+            selectedWord = word
+            selectedDefinition = LocalData.definition(for: word) ?? ""
+            selectedSyllables = LocalData.syllables(for: word)
+            showWordDetail = true
+        }) {
             Text(word)
                 .font(.subheadline)
                 .padding(.horizontal, 12)
