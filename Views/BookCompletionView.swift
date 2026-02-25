@@ -1,6 +1,8 @@
+
+
 import SwiftUI
 
-struct BookCompletionCongratsView: View {
+struct BookCompletionView: View {
     var onClose: (() -> Void)?
 
     @State private var showConfetti = false
@@ -62,5 +64,5 @@ struct BookCompletionCongratsView: View {
 }
 
 #Preview {
-    BookCompletionCongratsView(onClose: {})
+    BookCompletionView(onClose: {})
 }

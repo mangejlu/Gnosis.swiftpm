@@ -38,8 +38,7 @@ struct StartBookSinglePageView: View {
             AnyView(pageCreator),
             AnyView(pageApp),
             AnyView(pageWhy),
-            AnyView(pageHow12),
-            AnyView(pageHow3CTA)
+            AnyView(pageHow),
         ]
     }
 
@@ -261,44 +260,43 @@ private extension StartBookSinglePageView {
 
     var pageCreator: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Meet the Creator")
-                .font(.system(size: 26, weight: .bold, design: .serif))
-                .foregroundColor(.black)
+            HStack(alignment: .top, spacing: 12) {
+                Text("Meet the Creator")
+                    .font(.system(size: 35, weight: .bold, design: .serif))
+                    .foregroundColor(.black)
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
-            HStack(spacing: 14) {
                 RoundedRectangle(cornerRadius: 14)
                     .fill(Color.gray.opacity(0.08))
                     .frame(width: 120, height: 140)
                     .overlay(
-                        VStack {
-                            Image(systemName: "person.circle.fill")
-                                .font(.system(size: 56))
-                                .foregroundColor(Color.black.opacity(0.35))
-                            Text("Add Photo")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
+                        Image("Memoji")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 120, height: 140)
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
                     )
                     .overlay(
                         RoundedRectangle(cornerRadius: 14)
                             .stroke(Color.gray.opacity(0.2), lineWidth: 1)
                     )
+            }
 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("About")
-                        .font(.system(size: 18, weight: .semibold, design: .serif))
-                        .foregroundColor(.black)
+            VStack(alignment: .leading, spacing: 8) {
+                Text("About")
+                    .font(.system(size: 25, weight: .semibold, design: .serif))
+                    .foregroundColor(.black)
 
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")
-                        .font(.system(size: 14, design: .serif))
-                        .foregroundColor(.gray)
-                        .lineSpacing(4)
+                Text("My name is Mariangel Loaiza, and I'm a Computer Engineering student at Tecnológico de Monterrey. I adore the arts in all their forms and I'm constantly looking for ways to intersect creativity with technology.  ")
+                    .font(.system(size: 19, design: .serif))
+                    .foregroundColor(.gray)
+                    .lineSpacing(4)
 
-                    Text("Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.")
-                        .font(.system(size: 14, design: .serif))
-                        .foregroundColor(.gray)
-                        .lineSpacing(4)
-                }
+                Text("Reading has always been meaningful to me. My dad taught me to read before elementary school so we could share fairytales together before bed. Since then, I haven't stopped. ")
+                    .font(.system(size: 19, design: .serif))
+                    .foregroundColor(.gray)
+                    .lineSpacing(4)
+                    .padding(.top, 8)
             }
         }
     }
@@ -306,135 +304,58 @@ private extension StartBookSinglePageView {
     var pageApp: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("The App: Gnosis")
-                .font(.system(size: 28, weight: .bold, design: .serif))
+                .font(.system(size: 35, weight: .bold, design: .serif))
                 .foregroundColor(.black)
 
             Text("Gnosis is a gamified reading app designed to help young readers discover the joy of books while building focus and literacy skills. Gnosis combats the cognitive fragmentation caused by short-form content by rewarding deep attention, fostering comprehension, and making every finished book feel like a victory.")
-                .font(.system(size: 14, design: .serif))
+                .font(.system(size: 18, design: .serif))
                 .foregroundColor(.gray)
                 .lineSpacing(4)
 
             Text("Frameworks")
-                .font(.system(size: 22, weight: .bold, design: .serif))
+                .font(.system(size: 30, weight: .bold, design: .serif))
                 .foregroundColor(.black)
                 .padding(.top, 2)
 
             VStack(alignment: .leading, spacing: 12) {
-                StartBookFeatureRow(icon: "book.fill", text: "AVFoundations: Text to speech options for learning how to pronounce new words. ")
-                StartBookFeatureRow(icon: "star.fill", text: "SwiftUI: Used for creating the storybook design. ")
-                StartBookFeatureRow(icon: "heart.fill", text: "Feature 3 Description")
-                StartBookFeatureRow(icon: "bolt.fill", text: "Feature 4 Description")
+                StartBookFeatureRow(icon: "bolt.fill", text: "AVFoundations")
+                StartBookFeatureRow(icon: "bolt.fill", text: "SwiftUI")
+                StartBookFeatureRow(icon: "bolt.fill", text: "Foundation")
+                StartBookFeatureRow(icon: "bolt.fill", text: "Combine")
+                StartBookFeatureRow(icon: "bolt.fill", text: "UIKit")
             }
+            .font(.system(size:18, design: .serif))
         }
     }
 
     var pageWhy: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Why Books?")
-                .font(.system(size: 28, weight: .bold, design: .serif))
+                .font(.system(size: 30, weight: .bold, design: .serif))
                 .foregroundColor(.black)
 
-            Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Books are timeless vessels of knowledge and wisdom.")
-                .font(.system(size: 14, design: .serif))
+            Text("Books are where children learn to think, not just consume. Kids who read have bigger vocabularies, stronger focus, deeper emotional intelligence, and better academic outcomes.  Every child deserves the chance to build those foundations before the algorithm trains them to scroll instead of wonder.")
+                .font(.system(size: 18, design: .serif))
                 .foregroundColor(.gray)
                 .lineSpacing(4)
+            
 
+
+        }
+    }
+
+    var pageHow: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            
             Text("The Magic")
-                .font(.system(size: 22, weight: .bold, design: .serif))
+                .font(.system(size: 30, weight: .bold, design: .serif))
                 .foregroundColor(.black)
 
-            Text("Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.")
-                .font(.system(size: 14, design: .serif))
+            Text("Kids explore story “islands,” unlock chapters, and face playful boss challenges that make finishing a book feel like a win. Along the way, quick quizzes and friendly vocabulary helpers build confidence without pressure, while streaks and gentle rewards keep momentum going. By making focus feel fun and progress feel visible,")
+                .font(.system(size: 18, design: .serif))
                 .foregroundColor(.gray)
                 .lineSpacing(4)
-
-            Text("Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.")
-                .font(.system(size: 14, design: .serif))
-                .foregroundColor(.gray)
-                .lineSpacing(4)
-        }
-    }
-
-    var pageHow12: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("How It Works")
-                .font(.system(size: 28, weight: .bold, design: .serif))
-                .foregroundColor(.black)
-
-            Text("Understanding the journey:")
-                .font(.system(size: 16, weight: .medium, design: .serif))
-                .foregroundColor(Color.black.opacity(0.8))
-
-            VStack(alignment: .leading, spacing: 12) {
-                Text("Step 1")
-                    .font(.system(size: 16, weight: .semibold, design: .serif))
-                    .foregroundColor(.black)
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.gray.opacity(0.08))
-                    .frame(height: 110)
-                    .overlay(
-                        VStack {
-                            Image(systemName: "photo.fill")
-                                .foregroundColor(.gray)
-                            Text("Add Picture Here")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                    )
-                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
-                    .font(.system(size: 13, design: .serif))
-                    .foregroundColor(.gray)
-            }
-            .padding(.top, 4)
-
-            VStack(alignment: .leading, spacing: 12) {
-                Text("Step 2")
-                    .font(.system(size: 16, weight: .semibold, design: .serif))
-                    .foregroundColor(.black)
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.gray.opacity(0.08))
-                    .frame(height: 120)
-                    .overlay(
-                        VStack {
-                            Image(systemName: "photo.fill")
-                                .foregroundColor(.gray)
-                            Text("Add Picture Here")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }
-                    )
-                Text("Description text goes here for step 2.")
-                    .font(.system(size: 13, design: .serif))
-                    .foregroundColor(.gray)
-            }
-        }
-    }
-
-    var pageHow3CTA: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Step 3")
-                .font(.system(size: 22, weight: .semibold, design: .serif))
-                .foregroundColor(.black)
-
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.gray.opacity(0.08))
-                .frame(height: 120)
-                .overlay(
-                    VStack {
-                        Image(systemName: "photo.fill")
-                            .foregroundColor(.gray)
-                        Text("Add Picture Here")
-                            .font(.caption)
-                            .foregroundColor(.gray)
-                    }
-                )
-
-            Text("Description text goes here for step 3.")
-                .font(.system(size: 13, design: .serif))
-                .foregroundColor(.gray)
-
-            Spacer()
-
+            
             Button(action: {
                 withAnimation(.spring()) {
                     onFinished()
@@ -451,7 +372,10 @@ private extension StartBookSinglePageView {
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
+
+    
     }
+
 }
 
 struct StartBookFeatureRow: View {
@@ -476,3 +400,4 @@ struct StartBookFeatureRow: View {
 #Preview {
     StartBookView()
 }
+

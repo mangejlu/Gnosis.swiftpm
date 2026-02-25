@@ -1,9 +1,3 @@
-//
-//  StoryReaderView.swift
-//  Gnosis
-//
-//  Created by Mariangel J. Loaiza Urbina on 2/13/26.
-//
 
 import SwiftUI
 
@@ -72,7 +66,7 @@ struct StoryReaderView: View {
             .environmentObject(progressStore)
         }
         .fullScreenCover(isPresented: $showBookCongrats) {
-            BookCompletionCongratsView(onClose: {
+            BookCompletionView(onClose: {
                 showBookCongrats = false
                 popToMap = true
                 dismiss()

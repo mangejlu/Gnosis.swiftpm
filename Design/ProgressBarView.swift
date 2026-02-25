@@ -1,9 +1,3 @@
-//
-//  ProgressBarView.swift
-//  Gnosis
-//
-//  Created by Mariangel J. Loaiza Urbina on 2/15/26.
-//
 
 import SwiftUI
 

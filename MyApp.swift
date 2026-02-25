@@ -1,27 +1,26 @@
 import SwiftUI
 
-
 @main
 struct Gnosis: App {
     @StateObject var progress = UserProgress()
     @StateObject private var progressStore = ProgressStore()
-    @AppStorage("hasCompletedStartBook") private var hasCompletedStartBook: Bool = false
-    @AppStorage("hasSeenStartBook") private var hasSeenStartBook: Bool = false
+    @StateObject private var userSettings = UserSettings()
+    @State private var showStartBook: Bool = true
 
     var body: some Scene {
         WindowGroup {
             Group {
-                if hasSeenStartBook {
-                    RootView()
-                } else {
+                if showStartBook {
                     StartBookView(onFinished: {
-                        hasSeenStartBook = true
-                        hasCompletedStartBook = true
+                        showStartBook = false
                     })
+                } else {
+                    RootView()
                 }
             }
             .environmentObject(progress)
             .environmentObject(progressStore)
+            .environmentObject(userSettings)
         }
     }
 }
