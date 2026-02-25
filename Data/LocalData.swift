@@ -312,7 +312,7 @@ struct LocalData {
                     highlightedWords: [
                         "devised": "Carefully planned.",
                         "determination": "Refusing to give up.",
-                        "exhausted": "Extremely tired."
+                        "exhausted": "very, very tired."
                     ],
 
                     quiz: Quiz(
