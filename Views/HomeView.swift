@@ -83,44 +83,7 @@ struct HomeView: View {
                                 .font(.title2.bold())
                                 .foregroundColor(.black)
 
-
-                            HStack(spacing: 16) {
-
-                                
-                                NavigationLink {
-                                    if let book = firstUnlocked, let chapter = book.chapters.last {
-                                        BossIntroView(chapter: chapter)
-                                    } else {
-                                        Text("No chapters available yet")
-                                    }
-                                } label: {
-                                    GlassCard {
-                                        VStack(alignment: .leading, spacing: 8) {
-                                            Text("📚")
-                                                .font(.largeTitle)
-                                                .frame(maxWidth: .infinity, alignment: .leading)
-
-                                            Text("Continue Reading")
-                                                .font(.headline)
-                                                .foregroundColor(.black)
-
-
-                                            Text(firstUnlocked?.title ?? "Nothing to continue")
-                                                .font(.subheadline)
-                                                .foregroundColor(AppTheme.secondaryText)
-
-                                            Text("Tip: Tap the island above to open chapters")
-                                                .font(.caption)
-                                                .foregroundColor(AppTheme.secondaryText)
-                                        }
-                                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-                                    }
-                                }
-                                .buttonStyle(.plain)
-                                .frame(maxWidth: .infinity)
-                                .frame(height: 140)
-
-
+            
                                 // Daily Quiz
                                 NavigationLink {
 
@@ -160,7 +123,7 @@ struct HomeView: View {
                     }
                     .padding(.horizontal)
                     .padding(.top)
-                }
+                
             }
         }
         .onAppear {

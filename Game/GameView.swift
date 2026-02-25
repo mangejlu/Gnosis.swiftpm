@@ -337,15 +337,15 @@ struct GameView: View {
         
         switch currentRound {
         case 1:
-            feedbackMessage = "Feed me the character who made Pinocchio real! "
+            feedbackMessage = "Feed me the character who made Pinocchio real! 🧚"
         case 2:
-            feedbackMessage = "Feed me the talking cricket's home!"
+            feedbackMessage = "Feed me the talking cricket's home! 🕳️"
         case 3:
-            feedbackMessage = "Feed me what Pinocchio was carved from!"
+            feedbackMessage = "Feed me what Pinocchio was carved from! 🪵"
         case 4:
-            feedbackMessage = "Feed me the place where boys turned into donkeys!"
+            feedbackMessage = "Feed me the place where boys turned into donkeys! 🏝️"
         case 5:
-            feedbackMessage = "Feed me what the bad boys became!"
+            feedbackMessage = "Feed me what the bad boys became! 🫏"
         default:
             feedbackMessage = "Feed me the correct items!"
         }

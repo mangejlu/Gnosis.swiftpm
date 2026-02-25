@@ -39,6 +39,7 @@ struct StartBookSinglePageView: View {
             AnyView(pageApp),
             AnyView(pageWhy),
             AnyView(pageHow),
+            AnyView(pageHow2),
         ]
     }
 
@@ -261,7 +262,7 @@ private extension StartBookSinglePageView {
     var pageCreator: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .top, spacing: 12) {
-                Text("Meet the Creator")
+                Text("Meet the Creator!")
                     .font(.system(size: 35, weight: .bold, design: .serif))
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -284,7 +285,7 @@ private extension StartBookSinglePageView {
 
             VStack(alignment: .leading, spacing: 8) {
 
-                Text("My name is Mariangel Loaiza, and I'm a Computer Engineering student at Tecnológico de Monterrey. I adore the arts in all their forms and I'm constantly looking for ways to intersect creativity with technology.  ")
+                Text("Hi!👋 My name is Mariangel Loaiza, I'm a Computer Engineering student at Tecnológico de Monterrey. I adore the arts in all their forms and I'm constantly looking for ways to intersect creativity with technology.  ")
                     .font(.system(size: 19, design: .serif))
                     .foregroundColor(.gray)
                     .lineSpacing(4)
@@ -304,7 +305,7 @@ private extension StartBookSinglePageView {
                 .font(.system(size: 35, weight: .bold, design: .serif))
                 .foregroundColor(.black)
 
-            Text("Gnosis is a gamified reading app designed to help young readers discover the joy of books while building focus and literacy skills. Gnosis combats the cognitive fragmentation caused by short-form content by rewarding deep attention, fostering comprehension, and making every finished book feel like a victory.")
+            Text("Gnosis is a gamified reading app designed to help young readers discover the joy of books while building focus and literacy skills. Gnosis combats the cognitive fragmentation caused by short-form content, making every finished book feel like a victory.")
                 .font(.system(size: 18, design: .serif))
                 .foregroundColor(.gray)
                 .lineSpacing(4)
@@ -313,21 +314,24 @@ private extension StartBookSinglePageView {
                 .font(.system(size: 30, weight: .bold, design: .serif))
                 .foregroundColor(.black)
                 .padding(.top, 2)
+  
+                VStack(alignment: .leading, spacing: 12) {
+                    StartBookFeatureRow(icon: "bolt.fill", text: "AVFoundations")
+                    StartBookFeatureRow(icon: "bolt.fill", text: "SwiftUI")
+                    StartBookFeatureRow(icon: "bolt.fill", text: "Foundation")
+                    StartBookFeatureRow(icon: "bolt.fill", text: "Combine")
+                    StartBookFeatureRow(icon: "bolt.fill", text: "UIKit")
 
-            VStack(alignment: .leading, spacing: 12) {
-                StartBookFeatureRow(icon: "bolt.fill", text: "AVFoundations")
-                StartBookFeatureRow(icon: "bolt.fill", text: "SwiftUI")
-                StartBookFeatureRow(icon: "bolt.fill", text: "Foundation")
-                StartBookFeatureRow(icon: "bolt.fill", text: "Combine")
-                StartBookFeatureRow(icon: "bolt.fill", text: "UIKit")
-            }
+                }
+                    
+            
             .font(.system(size:18, design: .serif))
         }
     }
 
     var pageWhy: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Why Books?")
+            Text("Why Books? 🤔📚")
                 .font(.system(size: 30, weight: .bold, design: .serif))
                 .foregroundColor(.black)
 
@@ -340,11 +344,10 @@ private extension StartBookSinglePageView {
 
         }
     }
-
+    
     var pageHow: some View {
         VStack(alignment: .leading, spacing: 16) {
-            
-            Text("The Magic")
+            Text("The Magic 🪄✨")
                 .font(.system(size: 30, weight: .bold, design: .serif))
                 .foregroundColor(.black)
 
@@ -352,6 +355,23 @@ private extension StartBookSinglePageView {
                 .font(.system(size: 18, design: .serif))
                 .foregroundColor(.gray)
                 .lineSpacing(4)
+
+        }
+    }
+
+
+    var pageHow2: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            
+            Text("Guide 🗺️")
+                .font(.system(size: 30, weight: .bold, design: .serif))
+                .foregroundColor(.black)
+
+            Text("For this demo, most levels are already unlocked, except for the final one. To unlock the last boss chapter and take on the Isle of Honesty, you’ll need to complete the chapter that’s glowing orange. Once you finish that chapter, the next one in the sequence (the final chapter) will then be highlighted the same way, so you can always clearly see which chapter you’re on. If you ever want to revisit earlier chapters, those are fully open and ready to play! Dont forget to check out your progress and click on new words to learn more about them.")
+                .font(.system(size: 18, design: .serif))
+                .foregroundColor(.gray)
+                .lineSpacing(4)
+
                         
             Button(action: {
                 withAnimation(.spring()) {
@@ -386,8 +406,9 @@ struct StartBookFeatureRow: View {
                 .frame(width: 24)
 
             Text(text)
-                .font(.system(size: 14, design: .serif))
+                .font(.system(size: 18, design: .serif))
                 .foregroundColor(.gray)
+                
 
             Spacer()
         }

@@ -26,7 +26,7 @@ struct BossIntroView: View {
                         VStack(alignment: .leading, spacing: 12) {
                             Text("Oh no! The monster is about to eat the last chapter! We must do something about it. Let's feed it something else!")
                                 .font(.headline)
-                            Text("Feed the monster to unlock \(chapter.title).")
+                            Text("Feed the monster by dragging the correct item towards it to unlock \(chapter.title).")
                                 .font(.subheadline)
                                 .foregroundColor(AppTheme.secondaryText)
                         }
