@@ -283,9 +283,6 @@ private extension StartBookSinglePageView {
             }
 
             VStack(alignment: .leading, spacing: 8) {
-                Text("About")
-                    .font(.system(size: 25, weight: .semibold, design: .serif))
-                    .foregroundColor(.black)
 
                 Text("My name is Mariangel Loaiza, and I'm a Computer Engineering student at Tecnológico de Monterrey. I adore the arts in all their forms and I'm constantly looking for ways to intersect creativity with technology.  ")
                     .font(.system(size: 19, design: .serif))
@@ -351,11 +348,11 @@ private extension StartBookSinglePageView {
                 .font(.system(size: 30, weight: .bold, design: .serif))
                 .foregroundColor(.black)
 
-            Text("Kids explore story “islands,” unlock chapters, and face playful boss challenges that make finishing a book feel like a win. Along the way, quick quizzes and friendly vocabulary helpers build confidence without pressure, while streaks and gentle rewards keep momentum going. By making focus feel fun and progress feel visible,")
+            Text("Kids explore story “islands,” unlock chapters, and face playful boss challenges that make finishing a book feel like a win. Along the way, quick quizzes and friendly vocabulary helpers build confidence without pressure, while streaks and gentle rewards keep momentum going. This makes focus feel fun and progress be trackable.")
                 .font(.system(size: 18, design: .serif))
                 .foregroundColor(.gray)
                 .lineSpacing(4)
-            
+                        
             Button(action: {
                 withAnimation(.spring()) {
                     onFinished()
